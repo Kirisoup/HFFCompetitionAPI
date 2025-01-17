@@ -22,16 +22,16 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Copy-From>$(BaseIntermediateOutputPath)Debug\net48\</Copy-From>
-		<Copy-ToRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-ToRoot>
-		<Copy-ToPlugin>$(Copy-ToRoot)plugins\</Copy-ToPlugin>
-		<Copy-ToScript>$(Copy-ToRoot)scripts\testing\</Copy-ToScript>
+		<Copy-Source>$(BaseIntermediateOutputPath)Debug\net48\</Copy-Source>
+		<Copy-DestRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-DestRoot>
+		<Copy-DestPlugin>$(Copy-DestRoot)plugins\</Copy-DestPlugin>
+		<Copy-DestScript>$(Copy-DestRoot)scripts\testing\</Copy-DestScript>
 	</PropertyGroup>
 
 	<Target Name="Test" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
 		<Exec Command="copy /Y ^
-			&quot;$(Copy-From)$(MSBuildProjectName).dll&quot; ^
-			&quot;$(Copy-ToScript)$(MSBuildProjectName).dll&quot;" />
+			&quot;$(Copy-Source)$(MSBuildProjectName).dll&quot; ^
+			&quot;$(Copy-DestScript)$(MSBuildProjectName).dll&quot;" />
 	</Target>
 
 	<ItemGroup>

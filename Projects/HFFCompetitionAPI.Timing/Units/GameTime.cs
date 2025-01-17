@@ -18,6 +18,8 @@ public readonly partial record struct GameTime(ulong Cycles) : ITimeUnit<GameTim
 	public GameTime Sub(GameTime other) => new(Cycles - other.Cycles);
 	public GameTime Mul(GameTime other) => new(Cycles * other.Cycles);
 	public GameTime Div(GameTime other) => new(Cycles / other.Cycles);
+
+	public override string ToString() => $"{nameof(GameTime)}({Cycles})";
 }
 
 partial record struct GameTime : ISerializable

@@ -18,6 +18,8 @@ public readonly partial record struct RealTime(float TotalSeconds) : ITimeUnit<R
 	public RealTime Sub(RealTime other) => new(TotalSeconds - other.TotalSeconds);
 	public RealTime Mul(RealTime other) => new(TotalSeconds * other.TotalSeconds);
 	public RealTime Div(RealTime other) => new(TotalSeconds / other.TotalSeconds);
+
+	public override string ToString() => $"{nameof(RealTime)}({TotalSeconds})";
 }
 
 partial record struct RealTime : ISerializable
