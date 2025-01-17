@@ -1,0 +1,49 @@
+<Project>
+	<PropertyGroup>
+		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+		<TargetFramework>net48</TargetFramework>
+		<LangVersion>preview</LangVersion>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Include="$(SolutionDir)include\modernFeatureBackport.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+		<Reference Include="Microsoft.CSharp" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<RootOutputDir>$(SolutionDir)output\$(MSBuildProjectName)\</RootOutputDir>
+		<BaseOutputPath>$(RootOutputDir)build\</BaseOutputPath>
+		<BaseIntermediateOutputPath>$(RootOutputDir)obj\</BaseIntermediateOutputPath>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Copy-From>$(BaseIntermediateOutputPath)Debug\net48\</Copy-From>
+		<Copy-ToRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-ToRoot>
+		<Copy-ToPlugin>$(Copy-ToRoot)plugins\</Copy-ToPlugin>
+		<Copy-ToScript>$(Copy-ToRoot)scripts\testing\</Copy-ToScript>
+	</PropertyGroup>
+
+	<Target Name="Test" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+		<Exec Command="copy /Y ^
+			&quot;$(Copy-From)$(MSBuildProjectName).dll&quot; ^
+			&quot;$(Copy-ToScript)$(MSBuildProjectName).dll&quot;" />
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.Core" Version="5.*" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+		<PackageReference Include="UnityEngine.Modules" Version="2017.4.13" IncludeAssets="compile" />
+		<Reference Include="$(SolutionDir)\reference\Assembly-CSharp.dll" />
+		<Reference Include="$(SolutionDir)\reference\HumanAPI.dll" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+		<PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+	</ItemGroup>
+</Project>
