@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 public readonly partial record struct GameTime(ulong Cycles) : ITimeUnit<GameTime>
 {

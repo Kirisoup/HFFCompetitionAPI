@@ -6,7 +6,7 @@ global using Object = UnityEngine.Object;
 using BepInEx;
 using BepInEx.Logging;
 
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 [BepInPlugin(GUID, NAME, PluginInfo.PLUGIN_VERSION)]
 [BepInProcess("Human.exe")]

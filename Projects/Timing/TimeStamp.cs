@@ -1,6 +1,6 @@
 using System.Runtime.Serialization;
 
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 /// <summary>
 /// Representing a point in time, associated with the system time of its creation.

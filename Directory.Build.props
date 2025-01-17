@@ -1,6 +1,7 @@
 <Project>
 	<PropertyGroup>
-		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+		<ProjectNamespace>HFFTournamentAPI</ProjectNamespace>
+		<RootNamespace>$(ProjectNamespace).$(MSBuildProjectName)</RootNamespace>
 		<TargetFramework>net48</TargetFramework>
 		<LangVersion>preview</LangVersion>
 		<Nullable>enable</Nullable>

@@ -1,4 +1,4 @@
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 using System.Runtime.Serialization;
 

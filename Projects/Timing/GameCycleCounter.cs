@@ -1,4 +1,4 @@
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 public sealed partial class GameCycleCounter : MonoBehaviour
 {

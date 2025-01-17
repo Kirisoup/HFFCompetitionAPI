@@ -1,4 +1,4 @@
-namespace HFFCompetitionAPI.Timing;
+namespace HFFTournamentAPI.Timing;
 
 public interface ITimeUnit : ITime;
 public interface ITimeUnit<Self> : ITimeUnit,
