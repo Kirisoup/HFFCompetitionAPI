@@ -2,13 +2,24 @@
 	<PropertyGroup>
 		<ProjectNamespace>HFFTournamentAPI</ProjectNamespace>
 		<RootNamespace>$(ProjectNamespace).$(MSBuildProjectName)</RootNamespace>
+    	<AssemblyName>$(RootNamespace)</AssemblyName>
+		<Authors>KiriSoup</Authors>
 		<TargetFramework>net48</TargetFramework>
 		<LangVersion>preview</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+		<DefineConstants>DEBUG;</DefineConstants>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+		<DefineConstants>RELEASE</DefineConstants>
+	</PropertyGroup>
+
 	<ItemGroup>
-		<Compile Include="$(SolutionDir)include\modernFeatureBackport.cs" />
+		<!-- <Compile Include="$(SolutionDir)include\LangFeatureBackport.cs" /> -->
 	</ItemGroup>
 
 	<ItemGroup>
@@ -20,20 +31,12 @@
 		<RootOutputDir>$(SolutionDir)output\$(MSBuildProjectName)\</RootOutputDir>
 		<BaseOutputPath>$(RootOutputDir)build\</BaseOutputPath>
 		<BaseIntermediateOutputPath>$(RootOutputDir)obj\</BaseIntermediateOutputPath>
+	    <PackageOutputPath>$(SolutionDir)nupkgs\</PackageOutputPath>
 	</PropertyGroup>
 
-	<PropertyGroup>
-		<Copy-Source>$(BaseIntermediateOutputPath)Debug\net48\</Copy-Source>
-		<Copy-DestRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-DestRoot>
-		<Copy-DestPlugin>$(Copy-DestRoot)plugins\</Copy-DestPlugin>
-		<Copy-DestScript>$(Copy-DestRoot)scripts\testing\</Copy-DestScript>
-	</PropertyGroup>
-
-	<Target Name="Test" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
-		<Exec Command="copy /Y ^
-			&quot;$(Copy-Source)$(MSBuildProjectName).dll&quot; ^
-			&quot;$(Copy-DestScript)$(MSBuildProjectName).dll&quot;" />
-	</Target>
+	<ItemGroup Condition="'$(MSBuildProjectName)' != 'LangFeatureBackport'">
+		<PackageReference Include="LangFeatureBackport" Version="[1.0.0,)" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />

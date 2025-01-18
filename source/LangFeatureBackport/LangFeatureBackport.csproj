@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Version>1.0.0</Version>
+		<Authors>dotnet</Authors>
+		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
+    	<AssemblyName>$(RootNamespace)</AssemblyName>
+		<PackageId>$(RootNamespace)</PackageId>
+	</PropertyGroup>
+</Project>

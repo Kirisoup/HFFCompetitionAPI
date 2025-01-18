@@ -1,0 +1,14 @@
+{
+	"$schema": "http://json.schemastore.org/template",
+	"author": "Kirisoup",
+	"classifications": [ "BepInEx", "BepInEx 5" , "Plugin" ],
+	"identity": "Kirisoup.PluginTemplate",
+	"name": "Kirisoup's BepInEx Plugin",
+	"shortName": "kiriplugin",
+	"tags": {
+	  "language": "C#",
+	  "type": "project"
+	},
+	"preferNameDirectory": true,
+	"sourceName": "Kirisoup.PluginTemplate"
+  }

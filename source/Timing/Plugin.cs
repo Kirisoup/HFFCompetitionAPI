@@ -1,6 +1,3 @@
-global using System;
-global using System.Collections.Generic;
-global using System.Linq;
 global using UnityEngine;
 global using Object = UnityEngine.Object;
 using BepInEx;
@@ -10,7 +7,7 @@ namespace HFFTournamentAPI.Timing;
 
 [BepInPlugin(GUID, NAME, PluginInfo.PLUGIN_VERSION)]
 [BepInProcess("Human.exe")]
-internal sealed partial class Plugin : BaseUnityPlugin
+public sealed partial class Plugin : BaseUnityPlugin
 {
     public const string NAME = nameof(Timing);
     public const string GUID = $"hff.kirisoup.{NAME}";

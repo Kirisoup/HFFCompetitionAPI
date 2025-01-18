@@ -39,7 +39,7 @@ namespace System
 {
 	using System.Runtime.CompilerServices;
 
-	public readonly struct Index : IEquatable<Index>
+	internal readonly struct Index : IEquatable<Index>
 	{
 		private readonly int _value;
 
@@ -85,7 +85,7 @@ namespace System
 		public override string ToString() => (IsFromEnd ? "^" : "") + ((uint)Value).ToString();
 	}
 
-	public readonly struct Range(Index start, Index end) : IEquatable<Range>
+	internal readonly struct Range(Index start, Index end) : IEquatable<Range>
 	{
 		public Index Start { get; } = start;
 
