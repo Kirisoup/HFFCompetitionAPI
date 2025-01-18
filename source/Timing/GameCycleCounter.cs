@@ -4,7 +4,8 @@ public sealed partial class GameCycleCounter : MonoBehaviour
 {
 	private static GameObject? _parent;
 	private static GameCycleCounter? _instance;
-	public static GameCycleCounter Instance => _instance ?? Init();
+	public static GameCycleCounter Instance => _instance ?? throw new InvalidOperationException(
+		$"Caught an attempt to access a {nameof(GameCycleCounter)}.{nameof(Instance)} before initiallizing");
 
 	// ensures type can only be instantiated once
 	GameCycleCounter() {
@@ -16,11 +17,9 @@ public sealed partial class GameCycleCounter : MonoBehaviour
 			$"Caught an attempt to instantiate a {nameof(GameCycleCounter)} multiple times");
 	}
 
-	public static GameCycleCounter Init() {
-		if (_instance is not null) return _instance;
-		_parent = new GameObject($"{nameof(GameCycleCounter)}_{DateTime.UtcNow.Ticks}");
-		_instance = _parent.AddComponent<GameCycleCounter>();
-		return _instance;
+	internal static GameCycleCounter Init() {
+		_parent ??= new GameObject($"{nameof(GameCycleCounter)}_{DateTime.UtcNow.Ticks}");
+		return _instance ??= _parent.AddComponent<GameCycleCounter>();
 	}
 
 	public ulong Cycles { get; private set; }

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<Version>0.1.0</Version>
+		<PackageId>$(RootNamespace)</PackageId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Remove="$(SolutionDir)source\SubModules\SubModules.csproj" />
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.Core" Version="5.*" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
+	</ItemGroup>
+
+</Project>

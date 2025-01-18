@@ -4,6 +4,11 @@
 		<Authors>dotnet</Authors>
 		<RootNamespace>$(MSBuildProjectName)</RootNamespace>
     	<AssemblyName>$(RootNamespace)</AssemblyName>
-		<PackageId>$(RootNamespace)</PackageId>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Remove="$(SolutionDir)source\LangFeatureBackport\LangFeatureBackport.csproj" />
+		<ProjectReference Remove="$(SolutionDir)source\SubModules\SubModules.csproj" />
+	</ItemGroup>
+
 </Project>

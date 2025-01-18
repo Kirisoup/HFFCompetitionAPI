@@ -6,17 +6,21 @@
   	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="HFFTournamentAPI.Timing" Version="0.1.0" />
+		<PackageReference Include="Fody" Version="*" />
+		<PackageReference Include="Costura.Fody" Version="*" PrivateAssets='All' />
+		<ProjectReference Include="$(SolutionDir)source\Timing\Timing.csproj" />
+		<PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.Core" Version="5.*" />
+		<PackageReference Include="BepInEx.PluginInfoProps" Version="1.*" />
 	</ItemGroup>
 
-	<PropertyGroup>
-		<Copy-Source>$(BaseIntermediateOutputPath)Debug\net48\</Copy-Source>
-		<Copy-DestRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-DestRoot>
-		<Copy-DestPlugin>$(Copy-DestRoot)plugins\</Copy-DestPlugin>
-		<Copy-DestScript>$(Copy-DestRoot)scripts\testing\</Copy-DestScript>
-	</PropertyGroup>
-
 	<Target Name="Test" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
+		<PropertyGroup>
+			<Copy-Source>$(BaseIntermediateOutputPath)Debug\net48\</Copy-Source>
+			<Copy-DestRoot>C:\Program Files (x86)\Steam\steamapps\common\Human Fall Flat\BepInEx\</Copy-DestRoot>
+			<Copy-DestPlugin>$(Copy-DestRoot)plugins\</Copy-DestPlugin>
+			<Copy-DestScript>$(Copy-DestRoot)scripts\testing\</Copy-DestScript>
+		</PropertyGroup>
 		<Exec Command="copy /Y ^
 			&quot;$(Copy-Source)$(MSBuildProjectName).dll&quot; ^
 			&quot;$(Copy-DestScript)$(MSBuildProjectName).dll&quot;" />
